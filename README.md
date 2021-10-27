@@ -1,0 +1,3 @@
+- 👋 Hi, I’m Jorge Girón from Panama, nice yo see you around. In anything you need to know, I will be happy to help you
+- 🌱 I am currently learning web development in AngularJs and games in Unity3D, so if you have any advice to improve my projects, I'm all ears
+- 📫 How to reach me: kyoshi.giron@gmail.com
