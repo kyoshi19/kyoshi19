@@ -1,0 +1,1749 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "API rnPPrendarioPrincipal",
+    "description" : "API para invocar la ejecución de la operación del servicio de decisiones rnPPrendarioPrincipal.",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "http://bgcpnortexodmrs:9081/DecisionService/rest"
+  } ],
+  "paths" : {
+    "/prestamosPrendarios/1.0/rnPPrendarioPrincipal/1.0" : {
+      "post" : {
+        "summary" : "Invoca la ejecución de la operación del servicio de decisiones rnPPrendarioPrincipal.",
+        "description" : "Ejecuta la operación del servicio de decisiones rnPPrendarioPrincipal con la vía de acceso. /prestamosPrendarios/1.0/rnPPrendarioPrincipal/1.0.",
+        "operationId" : "callrnPPrendarioPrincipalDecisionServiceOperation",
+        "requestBody" : {
+          "description" : "Solicitud para la ejecución de la operación del servicio de decisiones. Contiene los parámetros de entrada que se utilizan para la ejecución.",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Request"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Respuesta para la ejecución de la operación del servicio de decisiones. Contiene los parámetros de salida que devuelve la ejecución.",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Response"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Error al invocar la ejecución de la operación del servicio de decisiones.",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Request" : {
+        "type" : "object",
+        "properties" : {
+          "__DecisionID__" : {
+            "type" : "string",
+            "description" : "Identificador único que representa la ejecución de la operación del servicio de decisiones. Si no se ha especificado, no se calculará automáticamente."
+          },
+          "cotizacion" : {
+            "$ref" : "#/components/schemas/CotizacionPrendario"
+          },
+          "nivel" : {
+            "type" : "string"
+          },
+          "version" : {
+            "type" : "string"
+          }
+        },
+        "description" : "Solicitud para la ejecución de la operación del servicio de decisiones. Contiene los parámetros de entrada que se utilizan para la ejecución."
+      },
+      "Response" : {
+        "type" : "object",
+        "properties" : {
+          "__DecisionID__" : {
+            "type" : "string",
+            "description" : "Identificador único que representa la ejecución de la operación del servicio de decisiones. Si no se ha especificado, no se calculará automáticamente."
+          },
+          "calculoAdicionales" : {
+            "$ref" : "#/components/schemas/CalculosAdicionales"
+          },
+          "cotizacion" : {
+            "$ref" : "#/components/schemas/CotizacionPrendario"
+          },
+          "version" : {
+            "type" : "string"
+          }
+        },
+        "description" : "Respuesta para la ejecución de la operación del servicio de decisiones. Contiene los parámetros de salida que devuelve la ejecución."
+      },
+      "CalculosAdicionales" : {
+        "type" : "object",
+        "properties" : {
+          "alertas" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "estado" : {
+            "type" : "string"
+          },
+          "banderas" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Parametro"
+            }
+          }
+        }
+      },
+      "Parametro" : {
+        "type" : "object",
+        "properties" : {
+          "nemonico" : {
+            "type" : "string"
+          },
+          "descripcion" : {
+            "type" : "string"
+          },
+          "tipo" : {
+            "type" : "string"
+          },
+          "valor" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Alerta" : {
+        "type" : "object",
+        "properties" : {
+          "identificador" : {
+            "type" : "string"
+          },
+          "tipoAlerta" : {
+            "type" : "string"
+          },
+          "mensaje" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Amortizacion" : {
+        "type" : "object",
+        "properties" : {
+          "tasa" : {
+            "type" : "number"
+          },
+          "tasaFeci" : {
+            "type" : "number"
+          },
+          "monto" : {
+            "type" : "number"
+          },
+          "pagos" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "pagaDiciembre" : {
+            "type" : "boolean"
+          },
+          "fechaPrimerPago" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "fechaInicial" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "difiereIntereses" : {
+            "type" : "boolean"
+          },
+          "diasAnio" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "diaPago" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "porcentajeFeci" : {
+            "type" : "number"
+          },
+          "recibeMensualidad" : {
+            "type" : "boolean"
+          },
+          "totalInteres" : {
+            "type" : "number"
+          },
+          "montoBallon" : {
+            "type" : "number"
+          },
+          "mensualidad" : {
+            "type" : "number"
+          },
+          "interesPrimerPago" : {
+            "type" : "number"
+          },
+          "montoMaximo" : {
+            "type" : "number"
+          }
+        }
+      },
+      "ApartadoPostal" : {
+        "type" : "object",
+        "properties" : {
+          "codigo" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "tipo" : {
+            "type" : "string"
+          },
+          "pais" : {
+            "type" : "string"
+          },
+          "valor" : {
+            "type" : "string"
+          },
+          "fechaRegistro" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "fechaModificacion" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
+        }
+      },
+      "Cabecera" : {
+        "type" : "object",
+        "properties" : {
+          "idCust" : {
+            "type" : "number"
+          },
+          "estatus" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "nombre" : {
+            "type" : "string"
+          },
+          "apellidos" : {
+            "type" : "string"
+          },
+          "identificacionCliente" : {
+            "type" : "string"
+          },
+          "fechaApc" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "nombreAsociacion" : {
+            "type" : "string"
+          },
+          "fechaDefuncion" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "estatusConexion" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ConsultaApc" : {
+        "type" : "object",
+        "properties" : {
+          "marcacionApc" : {
+            "type" : "string"
+          },
+          "obligacionesCanceladas" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ObligacionCancelada"
+            }
+          },
+          "obligacionesActivas" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ObligacionActiva"
+            }
+          },
+          "cabecera" : {
+            "$ref" : "#/components/schemas/Cabecera"
+          },
+          "contador" : {
+            "$ref" : "#/components/schemas/ContadorObligaciones"
+          },
+          "clasificacionGlobal" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ContadorObligaciones" : {
+        "type" : "object",
+        "properties" : {
+          "activasBuenas" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "activasRegulares" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "activasMalas" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "activasNoAplican" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "canceladasBuenas" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "canceladasRegulares" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "canceladasMalas" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "canceladasNoAplican" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }
+      },
+      "CotizacionPrendario" : {
+        "type" : "object",
+        "properties" : {
+          "indentificador" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "fechaCreacion" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "fechaModificacion" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "tipoOperacion" : {
+            "type" : "string"
+          },
+          "oficina" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "canal" : {
+            "type" : "string"
+          },
+          "etapa" : {
+            "type" : "string"
+          },
+          "estado" : {
+            "type" : "string"
+          },
+          "presenciaAdicional" : {
+            "type" : "string"
+          },
+          "limite" : {
+            "type" : "number"
+          },
+          "limiteRecomendado" : {
+            "type" : "number"
+          },
+          "viabilidad" : {
+            "$ref" : "#/components/schemas/Viabilidad"
+          },
+          "salarioTotal" : {
+            "type" : "number"
+          },
+          "historialCredito" : {
+            "type" : "string"
+          },
+          "cumpleEmpleo" : {
+            "type" : "boolean"
+          },
+          "formaPago" : {
+            "type" : "string"
+          },
+          "enviarEvaluar" : {
+            "type" : "boolean"
+          },
+          "parametrosBase" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Parametro"
+            }
+          },
+          "gastos" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Gasto"
+            }
+          },
+          "operacionCotizacion" : {
+            "type" : "string"
+          },
+          "amortizacion" : {
+            "$ref" : "#/components/schemas/Amortizacion"
+          },
+          "principal" : {
+            "$ref" : "#/components/schemas/PersonaPrendario"
+          },
+          "garantias" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ProductoPrendario"
+            }
+          },
+          "cambioTasa" : {
+            "type" : "boolean"
+          },
+          "montoSuperado" : {
+            "type" : "boolean"
+          },
+          "aplicaGarantia" : {
+            "type" : "boolean"
+          },
+          "montoInvalido" : {
+            "type" : "boolean"
+          },
+          "requiereAprobacion" : {
+            "type" : "boolean"
+          },
+          "porcentajePignorado" : {
+            "type" : "number"
+          },
+          "montoMaximoRecibir" : {
+            "type" : "number"
+          },
+          "montoPignorado" : {
+            "type" : "number"
+          },
+          "montoGarantia" : {
+            "type" : "number"
+          },
+          "montoRecibir" : {
+            "type" : "number"
+          },
+          "montoMinimo" : {
+            "type" : "number"
+          },
+          "montoPrestamo" : {
+            "type" : "number"
+          },
+          "montoTimbres" : {
+            "type" : "number"
+          },
+          "adicionales" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/PersonaPrendario"
+            }
+          },
+          "abonaCancela" : {
+            "type" : "number"
+          },
+          "comision" : {
+            "type" : "number"
+          },
+          "comisionBase" : {
+            "type" : "number"
+          },
+          "comisionMinima" : {
+            "type" : "number"
+          },
+          "comisionMaxima" : {
+            "type" : "number"
+          },
+          "comisionRecomendada" : {
+            "type" : "number"
+          },
+          "descuentoComision" : {
+            "type" : "number"
+          },
+          "descuentoTasa" : {
+            "type" : "number"
+          },
+          "devoluciones" : {
+            "type" : "number"
+          },
+          "formaPagoSugerido" : {
+            "type" : "string"
+          },
+          "interesPrimerPago" : {
+            "type" : "number"
+          },
+          "mensualidad" : {
+            "type" : "number"
+          },
+          "operacionRefinanciar" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/OperacionPrendario"
+            }
+          },
+          "pagos" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "pagosMaximo" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "pagosMinimo" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "pagosRecomendado" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "porcentajeComision" : {
+            "type" : "number"
+          },
+          "proposito" : {
+            "type" : "string"
+          },
+          "propositoSugerido" : {
+            "type" : "string"
+          },
+          "seguroVidaNoEndoso" : {
+            "type" : "number"
+          },
+          "tasa" : {
+            "type" : "number"
+          },
+          "tasaBase" : {
+            "type" : "number"
+          },
+          "tasaEfectiva" : {
+            "type" : "number"
+          },
+          "tasaMinima" : {
+            "type" : "number"
+          },
+          "tasaMaxima" : {
+            "type" : "number"
+          },
+          "tasaRecomendada" : {
+            "type" : "number"
+          },
+          "tasaSpread" : {
+            "type" : "number"
+          },
+          "tipoPrograma" : {
+            "type" : "string"
+          },
+          "totalGastos" : {
+            "type" : "number"
+          },
+          "variaciones" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Variacion"
+            }
+          },
+          "documentos" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Documento"
+            }
+          },
+          "comisionMinimaMonto" : {
+            "type" : "number"
+          },
+          "desglose1" : {
+            "type" : "string"
+          },
+          "desglose2" : {
+            "type" : "string"
+          },
+          "negocioSaldo" : {
+            "type" : "boolean"
+          },
+          "tramiteDiferido" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "DatosContacto" : {
+        "type" : "object",
+        "properties" : {
+          "codigo" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "tipo" : {
+            "type" : "string"
+          },
+          "subTipo" : {
+            "type" : "string"
+          },
+          "pais" : {
+            "type" : "string"
+          },
+          "valor" : {
+            "type" : "string"
+          },
+          "fechaRegistro" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "fechaModificacion" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
+        }
+      },
+      "Direccion" : {
+        "type" : "object",
+        "properties" : {
+          "secuencial" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "tipo" : {
+            "type" : "string"
+          },
+          "procedencia" : {
+            "type" : "string"
+          },
+          "direccionPrincipal" : {
+            "type" : "boolean"
+          },
+          "fechaActualizacion" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "considerar" : {
+            "type" : "boolean"
+          },
+          "provincia" : {
+            "type" : "string"
+          },
+          "distrito" : {
+            "type" : "string"
+          },
+          "corregimiento" : {
+            "type" : "string"
+          },
+          "barrio" : {
+            "type" : "string"
+          },
+          "calle" : {
+            "type" : "string"
+          },
+          "edificio" : {
+            "type" : "string"
+          },
+          "pais" : {
+            "type" : "string"
+          },
+          "direccion" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Documento" : {
+        "type" : "object",
+        "properties" : {
+          "codigo" : {
+            "type" : "string"
+          },
+          "tipoDocumento" : {
+            "type" : "string"
+          },
+          "nombre" : {
+            "type" : "string"
+          },
+          "nombreFisico" : {
+            "type" : "string"
+          },
+          "orden" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "requerido" : {
+            "type" : "string"
+          },
+          "paraCargar" : {
+            "type" : "string"
+          },
+          "paraImprimir" : {
+            "type" : "string"
+          },
+          "imprimirConData" : {
+            "type" : "string"
+          },
+          "estado" : {
+            "type" : "string"
+          },
+          "recibido" : {
+            "type" : "string"
+          },
+          "impreso" : {
+            "type" : "string"
+          },
+          "comentario" : {
+            "type" : "string"
+          },
+          "versionable" : {
+            "type" : "string"
+          },
+          "visibleCorreo" : {
+            "type" : "string"
+          },
+          "visible" : {
+            "type" : "string"
+          },
+          "accionDisponible" : {
+            "type" : "string"
+          },
+          "requeridoVisual" : {
+            "type" : "string"
+          },
+          "numeroCopia" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "etapasRequeridas" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Empleo" : {
+        "type" : "object",
+        "properties" : {
+          "tipoEmpresa" : {
+            "type" : "string"
+          },
+          "trabajoPrincipal" : {
+            "type" : "boolean"
+          },
+          "clasifMercado" : {
+            "type" : "string"
+          },
+          "lugarTrabajo" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "secuencial" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "cargo" : {
+            "type" : "string"
+          },
+          "fechaInicio" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "procedencia" : {
+            "type" : "string"
+          },
+          "salario" : {
+            "type" : "number"
+          },
+          "salarioTotal" : {
+            "type" : "number"
+          },
+          "salarioBase" : {
+            "type" : "number"
+          },
+          "gastosRepresentacion" : {
+            "type" : "number"
+          },
+          "comisiones" : {
+            "type" : "number"
+          },
+          "planVehicular" : {
+            "type" : "number"
+          },
+          "carreraAdministrativa" : {
+            "type" : "boolean"
+          },
+          "tipoIngreso" : {
+            "type" : "string"
+          },
+          "rentaGravable" : {
+            "type" : "array",
+            "items" : {
+              "type" : "number"
+            }
+          },
+          "utilidadNeta" : {
+            "type" : "array",
+            "items" : {
+              "type" : "number"
+            }
+          },
+          "numeroSeguroSocial" : {
+            "type" : "string"
+          },
+          "numeroPlanilla" : {
+            "type" : "string"
+          },
+          "cambioSalario" : {
+            "type" : "boolean"
+          },
+          "fuentePago" : {
+            "type" : "string"
+          },
+          "subTipoEmpresa" : {
+            "type" : "string"
+          },
+          "estabilidad" : {
+            "type" : "boolean"
+          },
+          "aplicaContinuidad" : {
+            "type" : "boolean"
+          },
+          "continuidad" : {
+            "type" : "boolean"
+          },
+          "mercadoObjetivo" : {
+            "type" : "boolean"
+          },
+          "salarioMinimo" : {
+            "type" : "boolean"
+          },
+          "clasificacionRegla" : {
+            "type" : "string"
+          },
+          "endeudamientoBase" : {
+            "type" : "number"
+          },
+          "comisionCobro" : {
+            "type" : "number"
+          },
+          "periodicidad" : {
+            "type" : "string"
+          },
+          "periodicidadSugerida" : {
+            "type" : "string"
+          }
+        }
+      },
+      "EmpleoCesante" : {
+        "type" : "object",
+        "properties" : {
+          "tipoEmpresa" : {
+            "type" : "string"
+          },
+          "trabajoPrincipal" : {
+            "type" : "boolean"
+          },
+          "clasifMercado" : {
+            "type" : "string"
+          },
+          "lugarTrabajo" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "secuencial" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "cargo" : {
+            "type" : "string"
+          },
+          "fechaInicio" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "procedencia" : {
+            "type" : "string"
+          },
+          "salario" : {
+            "type" : "number"
+          },
+          "salarioTotal" : {
+            "type" : "number"
+          },
+          "salarioBase" : {
+            "type" : "number"
+          },
+          "gastosRepresentacion" : {
+            "type" : "number"
+          },
+          "comisiones" : {
+            "type" : "number"
+          },
+          "planVehicular" : {
+            "type" : "number"
+          },
+          "carreraAdministrativa" : {
+            "type" : "boolean"
+          },
+          "tipoIngreso" : {
+            "type" : "string"
+          },
+          "rentaGravable" : {
+            "type" : "array",
+            "items" : {
+              "type" : "number"
+            }
+          },
+          "utilidadNeta" : {
+            "type" : "array",
+            "items" : {
+              "type" : "number"
+            }
+          },
+          "numeroSeguroSocial" : {
+            "type" : "string"
+          },
+          "numeroPlanilla" : {
+            "type" : "string"
+          },
+          "cambioSalario" : {
+            "type" : "boolean"
+          },
+          "fuentePago" : {
+            "type" : "string"
+          },
+          "subTipoEmpresa" : {
+            "type" : "string"
+          },
+          "estabilidad" : {
+            "type" : "boolean"
+          },
+          "aplicaContinuidad" : {
+            "type" : "boolean"
+          },
+          "continuidad" : {
+            "type" : "boolean"
+          },
+          "mercadoObjetivo" : {
+            "type" : "boolean"
+          },
+          "salarioMinimo" : {
+            "type" : "boolean"
+          },
+          "clasificacionRegla" : {
+            "type" : "string"
+          },
+          "endeudamientoBase" : {
+            "type" : "number"
+          },
+          "comisionCobro" : {
+            "type" : "number"
+          },
+          "periodicidad" : {
+            "type" : "string"
+          },
+          "periodicidadSugerida" : {
+            "type" : "string"
+          },
+          "fechaSalida" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "empleoVinculado" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }
+      },
+      "Excepcion" : {
+        "type" : "object",
+        "properties" : {
+          "codigo" : {
+            "type" : "string"
+          },
+          "tipo" : {
+            "type" : "string"
+          },
+          "descripcion" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ExpuestoPoliticamente" : {
+        "type" : "object",
+        "properties" : {
+          "expuesto" : {
+            "type" : "boolean"
+          },
+          "relacionConExpuesto" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "Gasto" : {
+        "type" : "object",
+        "properties" : {
+          "gasto" : {
+            "type" : "string"
+          },
+          "tipo" : {
+            "type" : "string"
+          },
+          "valorBase" : {
+            "type" : "number"
+          },
+          "valorImpuesto" : {
+            "type" : "number"
+          },
+          "valorTotal" : {
+            "type" : "number"
+          },
+          "visibilidad" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "JurisdiccionFiscal" : {
+        "type" : "object",
+        "properties" : {
+          "paisResidenciaFiscal" : {
+            "type" : "string"
+          },
+          "numeroDeIdentificacionFiscal" : {
+            "type" : "string"
+          },
+          "motivoPorNoTenerTin" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ObligacionActiva" : {
+        "type" : "object",
+        "properties" : {
+          "boIdCust" : {
+            "type" : "number"
+          },
+          "tipoObligacion" : {
+            "type" : "string"
+          },
+          "secuencial" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "asociacion" : {
+            "type" : "string"
+          },
+          "descripcionRelacion" : {
+            "type" : "string"
+          },
+          "tipoEntidad" : {
+            "type" : "string"
+          },
+          "fechaInicio" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "fechaFinal" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "monto" : {
+            "type" : "number"
+          },
+          "observacionApc" : {
+            "type" : "string"
+          },
+          "historial" : {
+            "type" : "string"
+          },
+          "referencia" : {
+            "type" : "string"
+          },
+          "claseObligacion" : {
+            "type" : "string"
+          },
+          "entidadFinanciera" : {
+            "type" : "string"
+          },
+          "notaUsuario" : {
+            "type" : "string"
+          },
+          "colorPunto" : {
+            "type" : "string"
+          },
+          "cumpleAntiguedad" : {
+            "type" : "boolean"
+          },
+          "cumpleAsociacion" : {
+            "type" : "boolean"
+          },
+          "aplicaObservacionSP" : {
+            "type" : "boolean"
+          },
+          "clasificacionIndividual" : {
+            "type" : "string"
+          },
+          "aplicaClasificacionGlobal" : {
+            "type" : "boolean"
+          },
+          "esLlamadoAlerta" : {
+            "type" : "boolean"
+          },
+          "cantidadPagos" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "formaPago" : {
+            "type" : "string"
+          },
+          "importeApc" : {
+            "type" : "number"
+          },
+          "fechaUltimoPago" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "montoUltimoPago" : {
+            "type" : "number"
+          },
+          "saldo" : {
+            "type" : "number"
+          },
+          "diasAtraso" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "ultimaActulizacion" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "aplicaA" : {
+            "type" : "string"
+          },
+          "aplicaASP" : {
+            "type" : "string"
+          },
+          "porcentaje" : {
+            "type" : "number"
+          },
+          "abonaCancela" : {
+            "type" : "number"
+          },
+          "incluidaCarta" : {
+            "type" : "boolean"
+          },
+          "aplicaCancelacionSaldo" : {
+            "type" : "boolean"
+          },
+          "operacionRelacionada" : {
+            "type" : "string"
+          },
+          "quincenabilidad" : {
+            "type" : "number"
+          }
+        }
+      },
+      "ObligacionCancelada" : {
+        "type" : "object",
+        "properties" : {
+          "boIdCust" : {
+            "type" : "number"
+          },
+          "tipoObligacion" : {
+            "type" : "string"
+          },
+          "secuencial" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "asociacion" : {
+            "type" : "string"
+          },
+          "descripcionRelacion" : {
+            "type" : "string"
+          },
+          "tipoEntidad" : {
+            "type" : "string"
+          },
+          "fechaInicio" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "fechaFinal" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "monto" : {
+            "type" : "number"
+          },
+          "observacionApc" : {
+            "type" : "string"
+          },
+          "historial" : {
+            "type" : "string"
+          },
+          "referencia" : {
+            "type" : "string"
+          },
+          "claseObligacion" : {
+            "type" : "string"
+          },
+          "entidadFinanciera" : {
+            "type" : "string"
+          },
+          "notaUsuario" : {
+            "type" : "string"
+          },
+          "colorPunto" : {
+            "type" : "string"
+          },
+          "cumpleAntiguedad" : {
+            "type" : "boolean"
+          },
+          "cumpleAsociacion" : {
+            "type" : "boolean"
+          },
+          "aplicaObservacionSP" : {
+            "type" : "boolean"
+          },
+          "clasificacionIndividual" : {
+            "type" : "string"
+          },
+          "aplicaClasificacionGlobal" : {
+            "type" : "boolean"
+          },
+          "esLlamadoAlerta" : {
+            "type" : "boolean"
+          },
+          "fechaCancelacion" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
+        }
+      },
+      "OperacionPrendario" : {
+        "type" : "object",
+        "properties" : {
+          "calcularPrima" : {
+            "type" : "string"
+          },
+          "destino" : {
+            "type" : "string"
+          },
+          "devolucion" : {
+            "type" : "number"
+          },
+          "estado" : {
+            "type" : "string"
+          },
+          "fechaInicio" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "fechaVencimiento" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "feci" : {
+            "type" : "number"
+          },
+          "mensualidad" : {
+            "type" : "number"
+          },
+          "monto" : {
+            "type" : "number"
+          },
+          "mejorOperacion" : {
+            "type" : "boolean"
+          },
+          "recomendada" : {
+            "type" : "boolean"
+          },
+          "prima" : {
+            "type" : "number"
+          },
+          "plazo" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "saldo" : {
+            "type" : "number"
+          },
+          "seguroVida" : {
+            "type" : "number"
+          },
+          "seleccionable" : {
+            "type" : "boolean"
+          },
+          "seleccionada" : {
+            "type" : "boolean"
+          },
+          "tasaInteres" : {
+            "type" : "number"
+          },
+          "numeroPrestamo" : {
+            "type" : "string"
+          },
+          "operacion" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "programa" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Pantallazo" : {
+        "type" : "object",
+        "properties" : {
+          "tipo" : {
+            "type" : "string"
+          },
+          "comentario" : {
+            "type" : "string"
+          },
+          "experiencia" : {
+            "type" : "string"
+          }
+        }
+      },
+      "PersonaPrendario" : {
+        "type" : "object",
+        "properties" : {
+          "tipoDocumento" : {
+            "type" : "string"
+          },
+          "documento" : {
+            "type" : "string"
+          },
+          "nacionalidad" : {
+            "type" : "string"
+          },
+          "segundaNacionalidad" : {
+            "type" : "string"
+          },
+          "direcciones" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Direccion"
+            }
+          },
+          "estado" : {
+            "type" : "string"
+          },
+          "evaluacionCumplimiento" : {
+            "type" : "string"
+          },
+          "datosContactos" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DatosContacto"
+            }
+          },
+          "apartadosPostales" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ApartadoPostal"
+            }
+          },
+          "ente" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "educacion" : {
+            "type" : "string"
+          },
+          "profesion" : {
+            "type" : "string"
+          },
+          "empleosActivos" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Empleo"
+            }
+          },
+          "empleosCesantes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/EmpleoCesante"
+            }
+          },
+          "pantallazo" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Pantallazo"
+            }
+          },
+          "segmentoCobis" : {
+            "$ref" : "#/components/schemas/Segmento"
+          },
+          "consultaApc" : {
+            "$ref" : "#/components/schemas/ConsultaApc"
+          },
+          "totalOtrosIngresos" : {
+            "type" : "number"
+          },
+          "sexo" : {
+            "type" : "string"
+          },
+          "estadoCivil" : {
+            "type" : "string"
+          },
+          "fechaNacimiento" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "edad" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "nombreCompleto" : {
+            "type" : "string"
+          },
+          "fuenteIngresos" : {
+            "type" : "string"
+          },
+          "paisNacimiento" : {
+            "type" : "string"
+          },
+          "clienteTrabaja" : {
+            "type" : "boolean"
+          },
+          "aplica" : {
+            "type" : "boolean"
+          },
+          "estabilidad" : {
+            "type" : "boolean"
+          },
+          "continuidad" : {
+            "type" : "boolean"
+          },
+          "salarioCalculado" : {
+            "type" : "number"
+          },
+          "documentos" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Documento"
+            }
+          },
+          "excepciones" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Excepcion"
+            }
+          },
+          "requiereExcepciones" : {
+            "type" : "boolean"
+          },
+          "agregarExcepcion" : {
+            "type" : "boolean"
+          },
+          "viabilidad" : {
+            "$ref" : "#/components/schemas/Viabilidad"
+          },
+          "tipoCliente" : {
+            "type" : "string"
+          },
+          "informacionRegulatoria" : {
+            "$ref" : "#/components/schemas/Regulatorio"
+          },
+          "clienteNuevo" : {
+            "type" : "boolean"
+          },
+          "salud" : {
+            "$ref" : "#/components/schemas/Salud"
+          },
+          "alertas" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Alerta"
+            }
+          },
+          "segmentoCredito" : {
+            "type" : "string"
+          },
+          "cuentas" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ProductoPrendario"
+            }
+          },
+          "abonaCancela" : {
+            "type" : "number"
+          },
+          "clasificacionCliente" : {
+            "type" : "string"
+          },
+          "esExtranjero" : {
+            "type" : "boolean"
+          },
+          "devolucion" : {
+            "type" : "number"
+          },
+          "recargos" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/RecargoSalud"
+            }
+          },
+          "totalRecargoPorcentaje" : {
+            "type" : "number"
+          }
+        }
+      },
+      "ProductoPrendario" : {
+        "type" : "object",
+        "properties" : {
+          "producto" : {
+            "type" : "string"
+          },
+          "cuenta" : {
+            "type" : "string"
+          },
+          "nombre" : {
+            "type" : "string"
+          },
+          "subProducto" : {
+            "type" : "string"
+          },
+          "descripcionProducto" : {
+            "type" : "string"
+          },
+          "fechaApertura" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "flagApertura" : {
+            "type" : "string"
+          },
+          "monto" : {
+            "type" : "number"
+          },
+          "comodin" : {
+            "type" : "string"
+          },
+          "aplicaParaGarantia" : {
+            "type" : "boolean"
+          },
+          "interes" : {
+            "type" : "number"
+          }
+        }
+      },
+      "RecargoSalud" : {
+        "type" : "object",
+        "properties" : {
+          "identificador" : {
+            "type" : "string"
+          },
+          "descripcion" : {
+            "type" : "string"
+          },
+          "porcentaje" : {
+            "type" : "number"
+          }
+        }
+      },
+      "Regulatorio" : {
+        "type" : "object",
+        "properties" : {
+          "expuestoPoliticamente" : {
+            "$ref" : "#/components/schemas/ExpuestoPoliticamente"
+          },
+          "jurisdiccionesFiscales" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/JurisdiccionFiscal"
+            }
+          },
+          "origenesFondos" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/JurisdiccionFiscal"
+            }
+          },
+          "destinosFondos" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/JurisdiccionFiscal"
+            }
+          }
+        }
+      },
+      "Salud" : {
+        "type" : "object",
+        "properties" : {
+          "peso" : {
+            "type" : "number"
+          },
+          "estatura" : {
+            "type" : "number"
+          },
+          "presion" : {
+            "type" : "string"
+          },
+          "embarazada" : {
+            "type" : "boolean"
+          },
+          "tiempoEmbarazo" : {
+            "type" : "string"
+          },
+          "primerEmbarazo" : {
+            "type" : "boolean"
+          },
+          "tipoParto" : {
+            "type" : "string"
+          },
+          "diabetico" : {
+            "type" : "boolean"
+          },
+          "desdeDiabetes" : {
+            "type" : "string"
+          },
+          "comaDiabetico" : {
+            "type" : "boolean"
+          },
+          "otrasCircustancias" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "actividadesRiesgo" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "enviadoACitaEjecutivo" : {
+            "type" : "boolean"
+          },
+          "requiereCita" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "Segmento" : {
+        "type" : "object",
+        "properties" : {
+          "segmento" : {
+            "type" : "string"
+          },
+          "descripcionSegmento" : {
+            "type" : "string"
+          },
+          "subSegmento" : {
+            "type" : "string"
+          },
+          "descripcionSubSegmento" : {
+            "type" : "string"
+          },
+          "categoria" : {
+            "type" : "string"
+          },
+          "descripcionCategoria" : {
+            "type" : "string"
+          },
+          "limiteMinimo" : {
+            "type" : "number"
+          },
+          "limiteMaximo" : {
+            "type" : "number"
+          },
+          "capacidad" : {
+            "type" : "number"
+          }
+        }
+      },
+      "Variacion" : {
+        "type" : "object",
+        "properties" : {
+          "tipo" : {
+            "type" : "string"
+          },
+          "tasa" : {
+            "type" : "number"
+          },
+          "pagos" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "comision" : {
+            "type" : "number"
+          }
+        }
+      },
+      "Viabilidad" : {
+        "type" : "object",
+        "properties" : {
+          "endMaxPoliticaPorcentaje" : {
+            "type" : "number"
+          },
+          "endMaxPoliticaDinero" : {
+            "type" : "number"
+          },
+          "endInicialPorcentaje" : {
+            "type" : "number"
+          },
+          "endInicialDinero" : {
+            "type" : "number"
+          },
+          "endFinalPorcentaje" : {
+            "type" : "number"
+          },
+          "endFinalDinero" : {
+            "type" : "number"
+          },
+          "preAprobacion" : {
+            "type" : "boolean"
+          },
+          "excedenciaEndeudamiento" : {
+            "type" : "number"
+          },
+          "marcacionEnd" : {
+            "type" : "boolean"
+          },
+          "disponibilidadEndDinero" : {
+            "type" : "number"
+          },
+          "disponibilidadEndPorcentaje" : {
+            "type" : "number"
+          }
+        }
+      },
+      "Error" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "integer",
+            "description" : "Código de error HTTP.",
+            "format" : "int32"
+          },
+          "message" : {
+            "type" : "string",
+            "description" : "Mensaje de error."
+          },
+          "details" : {
+            "type" : "string",
+            "description" : "Mensaje de error detallado."
+          },
+          "errorCode" : {
+            "type" : "string",
+            "description" : "Código de error de producto."
+          }
+        },
+        "description" : "Error al invocar la ejecución de la operación del servicio de decisiones."
+      }
+    }
+  }
+}
